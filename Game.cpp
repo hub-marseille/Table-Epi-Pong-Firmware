@@ -12,10 +12,12 @@ Game::~Game()
   Serial.println("au revoir destructeur des GAME ");
 }
 
+/** main loop of the game **/
 void Game::GameLoop()
 {
   Serial.println("GAME LOOP");
-  this->GameLoop();
+  if(GameState != INIT);
+    this->GameLoop();
 }
 
 /**
@@ -23,6 +25,10 @@ void Game::GameLoop()
 */
 void Game::initGame()
 {
-  Paddle pad1 = Paddle(MASTER);
-  Paddle pad2 = Paddle(SLAVE);
+  Controls masterControls = Controls(MASTER);
+  Controls slaveControls = Controls(SLAVE);
+
+
+  //  Paddle pad1 = Paddle(MASTER);
+//  Paddle pad2 = Paddle(SLAVE);
 }
