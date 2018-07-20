@@ -9,7 +9,7 @@ Controls::~Controls()
 {
 }
 
-void Controls::updateControls()
+void Controls::update()
 {
   if (digitalRead(10) == HIGH)
     this->_actionButtonState = 1;
@@ -26,4 +26,14 @@ int Controls::getEncoderPos()
 void Controls::setEncoderPos(int rotaryPos)
 {
   this->_rotaryPos = rotaryPos;
+}
+
+int Controls::getActionButtonState()
+{
+  return (this->_actionButtonState);
+}
+
+void Controls::setActionButtonState(int actionButtonState)
+{
+  this->_actionButtonState = actionButtonState;
 }

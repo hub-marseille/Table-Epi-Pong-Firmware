@@ -12,12 +12,15 @@ class Controls
   public:
     Controls(controlSide side);
     ~Controls();
-    void updateControls();
+    void update();
     int getEncoderPos();
     void setEncoderPos(int rotaryPos);
+    int getActionButtonState();
+    void setActionButtonState(int actionButtonState);
+
   private:
     int _rotaryPos;
-    int _actionButtonState; //idk if it will be usefull
+    bool _actionButtonState; //idk if it will be usefull
     controlSide _side;
 };
 
