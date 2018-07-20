@@ -3,13 +3,19 @@
 Game::Game()
 {
   Serial.println("salut contructeur des GAME ");
-
+  this->initGame();
+  this->GameLoop();
 }
 
 Game::~Game()
 {
   Serial.println("au revoir destructeur des GAME ");
+}
 
+void Game::GameLoop()
+{
+  Serial.println("GAME LOOP");
+  this->GameLoop();
 }
 
 /**
