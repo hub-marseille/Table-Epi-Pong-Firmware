@@ -2,11 +2,13 @@
 * GUIGUR 2018
 * This class move motors
 */
+
 #include "headers/Motor.hpp"
 
 Motor::Motor(int stepPin, int dirPin, int enablePin)
 {
-  Serial.print("init motor");
+  Serial.println("construct motor");
+  //Serial.print("init motor");
   //this->_stepPin = stepPin;
   //this->_dirPin = dirPin;
   //this->_enablePin = enablePin;
@@ -17,7 +19,7 @@ Motor::Motor(int stepPin, int dirPin, int enablePin)
 Motor::~Motor()
 {
   Serial.print("destruct motor");
-  Disable();
+//  Disable();
 }
 
 void Motor::initMotor()

@@ -2,9 +2,9 @@
 #ifndef MOTOR_HPP_
 #define MOTOR_HPP_
 
-#include <StepControl.h>
-#include <Arduino.h>
 #include <String.h>
+#include <Arduino.h>
+#include <StepControl.h>
 
 class Motor
 {
@@ -17,6 +17,7 @@ class Motor
     bool GetState();
     void Enable();
     void Disable();
+
   private:
     int _stepPin;
     int _dirPin;
