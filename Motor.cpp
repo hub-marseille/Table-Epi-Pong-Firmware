@@ -2,20 +2,21 @@
 * GUIGUR 2018
 * This class move motors
 */
-
 #include "headers/Motor.hpp"
-#include <StepControl.h>
 
 Motor::Motor(int stepPin, int dirPin, int enablePin)
 {
-  this->_stepPin = stepPin;
-  this->_dirPin = dirPin;
-  this->_enablePin = enablePin;
-  initMotor();
+  Serial.print("init motor");
+  //this->_stepPin = stepPin;
+  //this->_dirPin = dirPin;
+  //this->_enablePin = enablePin;
+  //digitalWrite(this->_enablePin, LOW);
+  //initMotor();
 }
 
 Motor::~Motor()
 {
+  Serial.print("destruct motor");
   Disable();
 }
 

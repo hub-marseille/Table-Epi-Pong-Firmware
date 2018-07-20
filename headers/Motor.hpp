@@ -3,6 +3,8 @@
 #define MOTOR_HPP_
 
 #include <StepControl.h>
+#include <Arduino.h>
+#include <String.h>
 
 class Motor
 {
