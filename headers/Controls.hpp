@@ -10,8 +10,8 @@ enum controlSide { MASTER, SLAVE };
 class Controls
 {
   public:
-    Controls(controlSide side);
     ~Controls();
+    Controls(controlSide side);
     void update();
     int getEncoderPos();
     void setEncoderPos(int rotaryPos);
@@ -19,9 +19,15 @@ class Controls
     void setActionButtonState(int actionButtonState);
 
   private:
+    int updateButton(int button);
     int _rotaryPos;
     bool _actionButtonState; //idk if it will be usefull
     controlSide _side;
+    int _action;
+    int _onePlayer;
+    int _twoPlayers;
+    int _encSig1;
+    int _encSig2;
 };
 
 #endif /* CONTROLS_HPP_ */

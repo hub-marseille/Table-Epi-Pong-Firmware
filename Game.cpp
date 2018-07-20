@@ -57,8 +57,6 @@ void Game::GameLoop()
 void Game::initGame()
 {
   Serial.println("initGame");
-  //Controls this->_masterControls = Controls(MASTER);
-  //Controls this->_slaveControls = Controls(SLAVE);
   this->_gameState = WAITINGPLAYERS;
   this->gameHub();
   //  Paddle pad1 = Paddle(MASTER);
