@@ -3,15 +3,18 @@
 
 #include <String.h>
 #include <Arduino.h>
-
-enum controlSide { MASTER, SLAVE };
+#ifndef CFG
+  #include "Config.hpp"
+#endif
 /* each side has a button for action, buttons to chose 1 or 2 player and a rotaru encoder */
+
+enum ControlsSide { C_MASTER, C_SLAVE };
 
 class Controls
 {
   public:
     ~Controls();
-    Controls(controlSide side);
+    Controls(ControlsSide side);
     void update();
     int getEncoderPos();
     void setEncoderPos(int rotaryPos);
@@ -22,7 +25,7 @@ class Controls
     int updateButton(int button);
     int _rotaryPos;
     bool _actionButtonState; //idk if it will be usefull
-    controlSide _side;
+    ControlsSide _side;
     int _action;
     int _onePlayer;
     int _twoPlayers;

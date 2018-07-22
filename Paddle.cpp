@@ -4,7 +4,7 @@
 */
 #include "headers/Paddle.hpp"
 
-Paddle::Paddle(padSide padSide)
+Paddle::Paddle(PaddleSide padSide)
 {
 
   Serial.println("salut contructeur des paddles ");

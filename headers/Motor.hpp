@@ -5,6 +5,9 @@
 #include <String.h>
 #include <Arduino.h>
 #include <StepControl.h>
+#ifndef CFG
+  #include "Config.hpp"
+#endif
 
 class Motor
 {

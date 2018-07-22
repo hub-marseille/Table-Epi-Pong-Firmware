@@ -3,6 +3,8 @@
 
 #include <String.h>
 #include <Arduino.h>
+#include "paddle.hpp"
+#include "ball.hpp"
 #include "Controls.hpp"
 
 enum GameState {INIT, WAITINGPLAYERS, INGAMESTARTING, INGAMESERVICE, INGAME, INGAMESCORE, INGAMEFINALSCORE};
@@ -28,8 +30,8 @@ class Game
     void gameHub();
     void waitingForPlayers();
     GameState _gameState;
-    Controls _masterControls = Controls(MASTER);
-    Controls _slaveControls = Controls(SLAVE);
+    Controls _masterControls = Controls(C_MASTER);
+    Controls _slaveControls = Controls(C_SLAVE);
 };
 
 #endif /* GAME_HPP_ */

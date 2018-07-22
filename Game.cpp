@@ -12,7 +12,6 @@ Game::~Game()
   Serial.println("au revoir destructeur des GAME ");
 }
 
-
 void Game::gameHub()
 {
   Serial.println("gameHub");
@@ -57,8 +56,11 @@ void Game::GameLoop()
 void Game::initGame()
 {
   Serial.println("initGame");
+ //TODO: 0 les paddles
+ //TODO: 0 la balle
+ //  Paddle pad1 = Paddle(MASTER);
+//  Paddle pad2 = Paddle(SLAVE);
+
   this->_gameState = WAITINGPLAYERS;
   this->gameHub();
-  //  Paddle pad1 = Paddle(MASTER);
-//  Paddle pad2 = Paddle(SLAVE);
 }

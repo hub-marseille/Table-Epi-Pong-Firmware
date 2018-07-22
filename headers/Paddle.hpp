@@ -4,12 +4,12 @@
 #include <String.h>
 #include <Arduino.h>
 
-enum padSide { MASTER, SLAVE };
+enum PaddleSide { P_MASTER, P_SLAVE };
 
 class Paddle
 {
   public:
-    Paddle(padSide padSide);
+    Paddle(PaddleSide padSide);
     ~Paddle();
     int getPos();
     void setPos(int pos);

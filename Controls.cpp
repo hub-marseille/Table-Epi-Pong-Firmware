@@ -1,10 +1,9 @@
 #include "headers/Controls.hpp"
-#include "headers/Config.hpp"
 
-Controls::Controls(controlSide side)
+Controls::Controls(ControlsSide side)
 {
   this->_side = side;
-  if (side == MASTER)
+  if (side == C_MASTER)
   {
     this->_action = ACTIONMASTER;
     this->_onePlayer = ONEPLAYERMASTER;
@@ -12,7 +11,7 @@ Controls::Controls(controlSide side)
     this->_encSig1 = ENCSIG1MASTER;
     this->_encSig2 = ENCSIG2MASTER;
   }
-  else if (side == SLAVE)
+  else if (side == C_SLAVE)
   {
     this->_action = ACTIONSLAVE;
     this->_onePlayer = ONEPLAYERSLAVE;
@@ -24,7 +23,6 @@ Controls::Controls(controlSide side)
 
 Controls::~Controls()
 {
-
 }
 
 void Controls::update()
@@ -33,16 +31,6 @@ void Controls::update()
     this->_onePlayer = updateButton(this->_onePlayer);
     this->_twoPlayers = updateButton(this->_twoPlayers);
     //TODO: update encoders
-}
-
-int Controls::updateButton(int button)
-{
-  int state = -1;
-  if (digitalRead(button) == HIGH)
-    state = 1;
-  else if (digitalRead(button) == LOW)
-    state = 0;
-  return (state);
 }
 
 /* GETTERS AND SETTERS */
@@ -64,4 +52,15 @@ int Controls::getActionButtonState()
 void Controls::setActionButtonState(int actionButtonState)
 {
   this->_actionButtonState = actionButtonState;
+}
+
+/* Private methods */
+int Controls::updateButton(int button)
+{
+  int state = -1;
+  if (digitalRead(button) == HIGH)
+    state = 1;
+  else if (digitalRead(button) == LOW)
+    state = 0;
+  return (state);
 }

@@ -1,7 +1,6 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <WString.h>
-#include "headers/Config.hpp"
 #include "headers/Game.hpp"
 //Stepper motor(29, 30);         // STEP pin: 2, DIR pin: 3 -> mot 4
 //StepControl<> controller;    // Use default settings
