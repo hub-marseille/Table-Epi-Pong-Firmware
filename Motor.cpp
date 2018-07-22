@@ -1,6 +1,6 @@
-/*
-* GUIGUR 2018
-* This class move motors
+/**
+** GUIGUR 2018
+** This class move motors
 */
 
 #include "headers/Motor.hpp"

@@ -1,7 +1,7 @@
 /**
-** this class get 2 interupt pins and change the value of a virtual pos according to min and max values
-**
+** GUIGUR 2018
 */
+
 #include "headers/Paddle.hpp"
 
 Paddle::Paddle(PaddleSide padSide)

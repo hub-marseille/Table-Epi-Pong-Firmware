@@ -1,3 +1,7 @@
+/**
+** GUIGUR 2018
+*/
+
 #include "headers/Game.hpp"
 
 Game::Game()

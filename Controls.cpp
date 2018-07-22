@@ -1,3 +1,7 @@
+/**
+** GUIGUR 2018
+*/
+
 #include "headers/Controls.hpp"
 
 Controls::Controls(ControlsSide side)
