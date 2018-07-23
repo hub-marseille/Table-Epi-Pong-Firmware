@@ -8,18 +8,16 @@
 Motor::Motor(int stepPin, int dirPin, int enablePin)
 {
   Serial.println("construct motor");
-  //Serial.print("init motor");
-  //this->_stepPin = stepPin;
-  //this->_dirPin = dirPin;
-  //this->_enablePin = enablePin;
-  //digitalWrite(this->_enablePin, LOW);
-  //initMotor();
+  this->_stepPin = stepPin;
+  this->_dirPin = dirPin;
+  this->_enablePin = enablePin;
+  this->Enable();
 }
 
 Motor::~Motor()
 {
   Serial.print("destruct motor");
-//  Disable();
+  Disable();
 }
 
 void Motor::initMotor()

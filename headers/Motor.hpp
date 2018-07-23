@@ -20,6 +20,7 @@ class Motor
     bool GetState();
     void Enable();
     void Disable();
+    void initMotor();
 
   private:
     int _stepPin;
@@ -32,7 +33,6 @@ class Motor
     int _pullInSpeed = 200;
     bool _enable;
     float _pos;
-    void initMotor();
 };
 
 #endif /* MOTOR_HPP_ */
