@@ -13,8 +13,8 @@ enum ControlsSide { C_MASTER, C_SLAVE };
 class Controls
 {
   public:
-    ~Controls();
     Controls(ControlsSide side);
+    ~Controls();
     void update();
     int getEncoderPos();
     void setEncoderPos(int rotaryPos);
