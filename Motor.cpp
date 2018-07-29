@@ -5,13 +5,15 @@
 
 #include "headers/Motor.hpp"
 
-Motor::Motor(int stepPin, int dirPin, int enablePin)
+Motor::Motor(int stepPin, int dirPin, int endStpPin)
 {
   Serial.println("construct motor");
   this->_stepPin = stepPin;
   this->_dirPin = dirPin;
-  this->_enablePin = enablePin;
-  this->Enable();
+  this->_endStpPin = endStpPin;
+
+  pinMode(this->_endStpPin, INPUT);
+
 }
 
 Motor::~Motor()
@@ -20,11 +22,21 @@ Motor::~Motor()
   Disable();
 }
 
+/**
+** This function init a motor by drving it until it hit a limit switch
+*/
 void Motor::initMotor()
 {
-  this->_motor.setAcceleration(this->_acceleration);    //2500 stp/s^2
-  this->_motor.setMaxSpeed(this->_maxSpeed);         //5000 stp/s
-  this->_motor.setPullInSpeed(this->_pullInSpeed); //works fine @ 200
+  this->_motor.setMaxSpeed(this->_acceleration);    //2500 stp/s^2
+  this->_motor.moveTo(3000);
+
+  while(this->_endStpState == HIGH)
+  {
+    this->_endStpState = digitalRead(this->_endStpPin);
+    this->_motor.run();
+  }
+  this->_motor.stop();
+  //this->_motor.setCurrentPosition(posPaddleMax);
 }
 
 float Motor::GetAbsolutePos()
@@ -34,31 +46,22 @@ float Motor::GetAbsolutePos()
 
 void Motor::GotoAbsolutePos(float pos)
 {
-  this->_pos = pos;
+/*  this->_pos = pos;
   this->_motor.setTargetRel(this->_pos);
   this->_controller.move(this->_motor);
+  */
 }
 
 void Motor::GotoRelativePos(float pos)
 {
+  /*
   this->_pos = this->_pos + pos;
   this->_motor.setTargetRel(this->_pos);
   this->_controller.move(this->_motor);
+*/
 }
 
 bool Motor::GetState()
 {
-  return this->_enable;
-}
-
-void Motor::Enable()
-{
-  this->_enable = true;
-  digitalWrite(this->_enablePin, LOW);
-}
-
-void Motor::Disable()
-{
-  this->_enable = false;
-  digitalWrite(this->_enablePin, HIGH);
+  //return this->_enable;
 }
