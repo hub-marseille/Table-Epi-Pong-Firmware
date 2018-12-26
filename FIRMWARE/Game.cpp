@@ -65,6 +65,7 @@ void Game::initGame()
  //  Paddle pad1 = Paddle(MASTER);
 //  Paddle pad2 = Paddle(SLAVE);
 
+  
   this->_gameState = WAITINGPLAYERS;
   this->gameHub();
 }

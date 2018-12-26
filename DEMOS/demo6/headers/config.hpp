@@ -1,0 +1,8 @@
+#ifndef CONFIG_HPP_
+# define CONFIG_HPP_
+
+# define INITSPEED 1000
+# define MAXSPEED 6000
+# define MAXACCELERATIONSPEED 10000
+
+#endif /* CONFIG_HPP_ */

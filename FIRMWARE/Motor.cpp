@@ -7,19 +7,33 @@
 
 Motor::Motor(int stepPin, int dirPin, int endStpPin)
 {
-  Serial.println("construct motor");
-  this->_stepPin = stepPin;
-  this->_dirPin = dirPin;
-  this->_endStpPin = endStpPin;
+  //AccelStepper _motorq = AccelStepper(1, 3, 4);
+  AccelStepper _motorq(AccelStepper::DRIVER, 3, 4);
 
-  pinMode(this->_endStpPin, INPUT);
+  Serial.println("construct motor");
+  _stepPin = stepPin;
+  _dirPin = dirPin;
+  _endStpPin = endStpPin;
+
+  _endStpState = HIGH;
+
+
+  pinMode(_endStpPin, INPUT);
+
+  const int maxAccelerationSpeed = 2000;
+
+  _motorq.setAcceleration(maxAccelerationSpeed);
+  _motorq.setSpeed(1000);
+  _motorq.moveTo(500);
+  _motorq.run();
+
+  //this->initMotor();
 
 }
 
 Motor::~Motor()
 {
   Serial.print("destruct motor");
-  Disable();
 }
 
 /**
@@ -27,16 +41,20 @@ Motor::~Motor()
 */
 void Motor::initMotor()
 {
-  this->_motor.setMaxSpeed(this->_acceleration);    //2500 stp/s^2
-  this->_motor.moveTo(3000);
+  Serial.println("init motor");
+  _motor.setMaxSpeed(150);    //2500 stp/s^2
+  _motor.moveTo(3000);
 
-  while(this->_endStpState == HIGH)
+  while(_endStpState == HIGH)
   {
-    this->_endStpState = digitalRead(this->_endStpPin);
-    this->_motor.run();
+    Serial.println("loop motor");
+    _endStpState = digitalRead(_endStpPin);
+    _motor.run();
   }
-  this->_motor.stop();
+  _motor.stop();
   //this->_motor.setCurrentPosition(posPaddleMax);
+  _motor.setAcceleration(_acceleration);
+  _motor.setSpeed(1000);
 }
 
 float Motor::GetAbsolutePos()

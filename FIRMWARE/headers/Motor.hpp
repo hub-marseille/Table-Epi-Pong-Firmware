@@ -29,7 +29,7 @@ class Motor
 
 
     int _endStpState;
-    AccelStepper _motor = AccelStepper(1, _stepPin, _dirPin);
+    AccelStepper _motor = AccelStepper(1, 3, 4);
 
     /*
     Stepper _motor = Stepper(_stepPin, _dirPin);
