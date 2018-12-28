@@ -5,13 +5,16 @@
 
 #include <AccelStepper.h>
 //#include <Encoder.h>
+#include "headers/config.hpp"
+#include "headers/SerialCommands.hpp"
 #include "headers/Motors.hpp"
 #include "headers/Game.hpp"
 
 #include <vector>
-#include "headers/config.hpp"
 
 //Encoder knobLeft(0, 1);
+
+/*if(SERIALCOMMANDSDISABLE != false) */
 
 const int enableMot = 8;
 Motors::t_paddleParams paddleParams = {500, 700, 11000};
@@ -20,6 +23,7 @@ Motors::t_paddleParams ballLongParams = {0, 0, 0};
 
 Motors paddleMaster(3, 4, 2, {"paddle master"}, paddleParams );
 Motors paddleSlave(24, 25, 31, {"paddle slave"}, paddleParams);
+SerialCommands DebugTerminal;
 
 //int posPaddle;
 //long posEncoder;
@@ -30,25 +34,28 @@ void setup()
 {
   Serial.begin(115200);
   while (!Serial) {;}
-  Serial.println("Demo 7");
+
 
   pinMode(enableMot, OUTPUT);
   digitalWrite(enableMot, LOW);
   pinMode(2, INPUT); // endstop to init motor
   pinMode(31, INPUT); // endstop to init motor
 
-  Game();
+  //Game();
+
   //paddleMaster.initMotor();
-  paddleMaster.initMotor();
-  paddleSlave.initMotor();
+  //paddleSlave.initMotor();
 
   delay(1000);
+  //_reboot_Teensyduino_();
 }
 
 void loop()
 {
-  paddleMaster.updateMotor();
-  paddleSlave.updateMotor();
+  DebugTerminal.updateSerialCommands();
+  //paddleMaster.updateMotor();
+  //paddleSlave.updateMotor();
+
 }
 
 /*

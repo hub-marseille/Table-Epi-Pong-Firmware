@@ -14,6 +14,8 @@ Motors::Motors(int step, int dir, int endStp, Motors::t_motorsInfos infos, Motor
   _params = params;
   _playablePos = params.railLength-params.minSfyZone-params.maxSfyZone;
   _stepper = AccelStepper(AccelStepper::DRIVER, _step, _dir);
+  _stepper.setPinsInverted(1);
+
 }
 
 Motors::~Motors()
