@@ -10,6 +10,7 @@ SerialCommands::SerialCommands()
   Serial.begin(115200);
   while (!Serial) {;}
   printHeader();
+  inputStatus();
 }
 
 SerialCommands::~SerialCommands()
@@ -19,6 +20,17 @@ SerialCommands::~SerialCommands()
 
 void SerialCommands::updateSerialCommands()
 {
+
+}
+
+void SerialCommands::inputStatus()
+{
+  Serial.printf("MASTER:\n");
+  Serial.printf("(A) => off  (I) => off  (II) => off\n");
+  Serial.printf("ENC => %d\n", 1234);
+  Serial.printf("SALVE:\n");
+  Serial.printf("(A) => off  (I) => off  (II) => off\n");
+  Serial.printf("ENC => %d\n", 1234);
 
 }
 

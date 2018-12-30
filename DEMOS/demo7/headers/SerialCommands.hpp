@@ -17,6 +17,7 @@ public:
   void printStringInHex(String str);
 private:
   void printHeader();
+  void inputStatus();
 };
 
 #endif /* SERIALCOMMANDS_HPP_ */

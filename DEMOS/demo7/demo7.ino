@@ -8,6 +8,7 @@
 #include "headers/config.hpp"
 #include "headers/SerialCommands.hpp"
 #include "headers/Motors.hpp"
+#include "headers/Inputs.hpp"
 #include "headers/Game.hpp"
 
 #include <vector>
@@ -18,13 +19,16 @@
 
 const int enableMot = 8;
 Motors::t_paddleParams paddleParams = {500, 700, 11000};
-Motors::t_paddleParams ballShortParams = {0, 0, 0};
-Motors::t_paddleParams ballLongParams = {0, 0, 0};
+Motors::t_paddleParams ballXAxisParams = {0, 0, 0};
+Motors::t_paddleParams ballYAxisParams = {0, 0, 7000};
 
 Motors paddleMaster(3, 4, 2, {"paddle master"}, paddleParams );
-Motors paddleSlave(24, 25, 31, {"paddle slave"}, paddleParams);
-SerialCommands DebugTerminal;
+Motors paddleSlave(24, 25, 5, {"paddle slave"}, paddleParams);
+Motors ballXAxis(29, 30, 32, {"ballXAxis"}, paddleParams);
+Motors ballYAxis(26, 27, 31, {"ballYAxis"}, ballYAxisParams);
 
+SerialCommands DebugTerminal;
+Inputs buttonA;
 //int posPaddle;
 //long posEncoder;
 //enum way {ASC, DESC, SAME};
@@ -32,19 +36,19 @@ SerialCommands DebugTerminal;
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {;}
-
-
   pinMode(enableMot, OUTPUT);
   digitalWrite(enableMot, LOW);
   pinMode(2, INPUT); // endstop to init motor
+  pinMode(5, INPUT); // endstop to init motor
   pinMode(31, INPUT); // endstop to init motor
+  pinMode(32, INPUT); // endstop to init motor
 
   //Game();
 
-  //paddleMaster.initMotor();
-  //paddleSlave.initMotor();
+  paddleMaster.initMotor();
+  paddleSlave.initMotor();
+  ballXAxis.initMotor();
+  ballYAxis.initMotor();
 
   delay(1000);
   //_reboot_Teensyduino_();
@@ -53,9 +57,11 @@ void setup()
 void loop()
 {
   DebugTerminal.updateSerialCommands();
-  //paddleMaster.updateMotor();
-  //paddleSlave.updateMotor();
-
+  buttonA.updateInputs();
+  paddleMaster.updateMotor();
+  paddleSlave.updateMotor();
+  ballXAxis.updateMotor();
+  ballYAxis.updateMotor();
 }
 
 /*
